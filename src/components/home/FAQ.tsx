@@ -37,7 +37,7 @@ export function FAQ() {
           </h2>
         </div>
 
-        <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+        <Accordion defaultValue={["item-0"]} className="w-full">
           {faqs.map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-border">
               <AccordionTrigger className="text-left font-bold text-lg hover:no-underline hover:text-accent-blue transition-colors">
