@@ -22,8 +22,8 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
               <Mail size={16} />
-              <a href="mailto:buildyourway.studio@gmail.com" className="hover:text-foreground transition-colors">
-                buildyourway.studio@gmail.com
+              <a href="mailto:abhijitmungase608@gmail.com" className="hover:text-foreground transition-colors">
+                abhijitmungase608@gmail.com
               </a>
             </div>
           </div>
