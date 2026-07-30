@@ -21,9 +21,7 @@ export default function About() {
             <p>
               My tech stack revolves around Next.js, React Native, Node.js, and scalable cloud databases. However, I believe tools are just a means to an end. The real value lies in understanding the problem and architecting a clean, maintainable solution that can scale gracefully as your user base grows.
             </p>
-            <p>
-              Whether it's an EdTech platform helping schools manage attendance or a robust enterprise portal for company attendance systems, I focus on delivering premium engineering. I don't just write code; I partner with you to ensure the product achieves its business goals.
-            </p>
+
           </div>
         </div>
 
