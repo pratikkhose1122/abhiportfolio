@@ -7,13 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 const testimonials = [
   {
     quote: "Abhijit delivered our SaaS MVP ahead of schedule. The code was exceptionally clean and the UI was exactly what we envisioned. True premium engineering.",
-    name: "Sarah Jenkins",
-    role: "Founder, EduTech Solutions",
+    name: "Abhijit Mungase",
+    role: "Software Developer",
   },
   {
     quote: "Working with Abhijit felt like having an entire dev team at our disposal. The communication was flawless and the final product is scaling beautifully.",
-    name: "Mark Thompson",
-    role: "CTO, FinFlow",
+    name: "Abhijit Mungase",
+    role: "Software Developer",
   }
 ];
 

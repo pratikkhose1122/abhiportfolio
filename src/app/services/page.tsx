@@ -1,7 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Smartphone, MonitorSmartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+
+// Animation variants fixed
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
 
 export default function Services() {
+  const iconColors = ["bg-blue-500", "bg-purple-500"];
+
   const services = [
     {
       id: "mobile",
@@ -34,10 +53,16 @@ export default function Services() {
   ];
 
   return (
-    <div className="pt-12 md:pt-20 pb-24 md:pb-32 bg-background min-h-screen">
+    <div className="pt-12 md:pt-20 pb-24 md:pb-32 bg-background min-h-screen overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         
-        <div className="text-center mb-24">
+        {/* Header Animation */}
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+          className="text-center mb-24"
+        >
           <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground mb-4 block">
             Capabilities
           </span>
@@ -47,72 +72,119 @@ export default function Services() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             I deliver end-to-end product development, transforming complex business requirements into elegant, high-performing software.
           </p>
-        </div>
+        </motion.div>
 
         <div className="space-y-32">
-          {services.map((svc) => (
-            <div key={svc.id} id={svc.id} className="scroll-mt-32">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-secondary rounded-xl flex items-center justify-center">
-                  <svc.icon className="w-7 h-7 text-foreground" />
-                </div>
+          {services.map((svc, svcIndex) => (
+            <motion.div 
+              key={svc.id} 
+              id={svc.id} 
+              className="scroll-mt-32"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+            >
+              
+              {/* Service Header */}
+              <div className="flex items-center gap-6 mb-6">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className={`w-14 h-14 ${iconColors[svcIndex % iconColors.length]} rounded-2xl flex items-center justify-center shadow-md transition-all duration-300`}
+                >
+                  <svc.icon className="w-7 h-7 text-white" strokeWidth={2.5} />
+                </motion.div>
                 <div>
                   <h2 className="text-3xl font-bold font-heading text-foreground">{svc.title}</h2>
-                  <p className="text-accent-blue font-medium">{svc.hook}</p>
+                  <p className="text-muted-foreground font-medium">{svc.hook}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-                <div className="bg-card border border-border p-8 rounded-xl relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-destructive"></div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">The Problem</h3>
-                  <p className="text-muted-foreground leading-relaxed">{svc.problem}</p>
-                </div>
-                <div className="bg-card border border-border p-8 rounded-xl relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-green-500"></div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Our Solution</h3>
-                  <p className="text-foreground leading-relaxed">{svc.solution}</p>
-                </div>
-              </div>
+              {/* Problem & Solution (Clean Cards) */}
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12"
+              >
+                <motion.div variants={fadeInUp} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl shadow-sm">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-4">The Problem</h3>
+                  <p className="text-zinc-600 leading-relaxed">{svc.problem}</p>
+                </motion.div>
+                <motion.div variants={fadeInUp} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl shadow-sm">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-4">Our Solution</h3>
+                  <p className="text-zinc-900 leading-relaxed">{svc.solution}</p>
+                </motion.div>
+              </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+              {/* ✅ IMAGE 1 & 2 DESIGN: LIGHT GREY ICON BOXES */}
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
+              >
                 {svc.benefits.map((benefit, i) => (
-                  <div key={i} className="flex items-start gap-4 p-6 bg-background border border-border rounded-xl">
-                    <div className="w-10 h-10 shrink-0 bg-secondary rounded-lg flex items-center justify-center">
-                      <benefit.icon className="w-5 h-5 text-foreground" />
+                  <motion.div 
+                    key={i} 
+                    variants={fadeInUp}
+                    whileHover={{ y: -4, boxShadow: "0 8px 25px rgba(0,0,0,0.06)" }}
+                    className="flex items-start gap-4 p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl transition-all duration-300"
+                  >
+                    {/* Exact Light Grey Box with Black Icon */}
+                    <div className="w-12 h-12 shrink-0 bg-zinc-100 dark:bg-zinc-800 rounded-xl flex items-center justify-center">
+                      <benefit.icon className="w-6 h-6 text-zinc-900 dark:text-zinc-100" strokeWidth={2} />
                     </div>
                     <div>
-                      <div className="font-bold text-foreground mb-1">{benefit.label}</div>
-                      <div className="text-sm text-muted-foreground">{benefit.desc}</div>
+                      <div className="font-bold text-zinc-900 dark:text-white mb-1">{benefit.label}</div>
+                      <div className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{benefit.desc}</div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
-              <div className="flex justify-start">
+              {/* CTA Button */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex justify-start"
+              >
                 <Link
                   href="/contact"
-                  className="px-8 py-3.5 bg-foreground text-background rounded-xl font-medium hover-minimal flex items-center gap-2"
+                  className="px-8 py-3.5 bg-black text-white rounded-xl font-medium hover:bg-black/90 hover:scale-105 transition-all duration-300 flex items-center gap-2 shadow-md"
                 >
                   Discuss your {svc.title.toLowerCase()}
-                  <ArrowRight size={18} />
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Closing CTA */}
-        <div className="mt-32 bg-card border border-border rounded-xl p-8 md:p-12 text-center">
-          <h3 className="text-2xl font-bold font-heading mb-4">Not sure which service fits?</h3>
-          <p className="text-muted-foreground mb-8">Let's hop on a brief call. I'll listen to your goals and recommend the best technical approach, even if we don't end up working together.</p>
+        {/* ✅ IMAGE 4 DESIGN: GRADIENT CTA BANNER */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-32 bg-gradient-to-r from-[#4F1A81] via-[#1A4A8A] to-[#00C2FF] rounded-3xl p-10 md:p-14 text-center flex flex-col items-center shadow-xl"
+        >
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-heading max-w-2xl leading-tight">
+            Not sure which service fits?
+          </h3>
+          <p className="text-blue-100/90 mb-8 text-lg max-w-xl">
+            Let's hop on a brief call. I'll listen to your goals and recommend the best technical approach, even if we don't end up working together.
+          </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-background border border-border text-foreground rounded-xl font-medium hover:bg-secondary transition-colors duration-300"
+            className="px-8 py-3.5 bg-white text-[#1A4A8A] rounded-xl font-bold hover:bg-gray-100 transition-colors duration-300 shadow-md"
           >
             Schedule a Free Strategy Call
           </Link>
-        </div>
+        </motion.div>
 
       </div>
     </div>

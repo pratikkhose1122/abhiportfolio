@@ -40,6 +40,8 @@ export function FeaturedProjects() {
   return (
     <section className="py-24 md:py-32 bg-card">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
+        
+        {/* Header Section */}
         <div className="mb-16">
           <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground mb-4 block">
             Our Work
@@ -49,6 +51,7 @@ export function FeaturedProjects() {
           </h2>
         </div>
 
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {projects.map((project, i) => (
             <div key={i} className="flex flex-col h-full bg-background border border-border rounded-xl overflow-hidden hover-minimal">
@@ -94,28 +97,33 @@ export function FeaturedProjects() {
           ))}
         </div>
 
-        <div className="bg-background border border-border rounded-xl p-8 md:p-12 text-center flex flex-col items-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 font-heading">
+        {/* 🔥 UPDATED CTA SECTION (Image 2 Design) */}
+        <div className="bg-gradient-to-r from-[#4F1A81] via-[#1A4A8A] to-[#00C2FF] rounded-2xl p-10 md:p-14 text-center flex flex-col items-center shadow-lg">
+          
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-heading max-w-2xl leading-tight">
             Want results like this?
           </h3>
-          <p className="text-muted-foreground mb-8">
+          
+          <p className="text-blue-100/90 mb-8 text-lg max-w-xl">
             Let's discuss how we can build your next big idea.
           </p>
+          
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="px-8 py-3.5 bg-foreground text-background rounded-xl font-medium hover-minimal"
+              className="px-8 py-3.5 bg-white text-[#1A4A8A] rounded-xl font-bold hover:bg-gray-100 transition-colors duration-300 shadow-md"
             >
               Start a Project
             </Link>
             <Link
               href="/projects"
-              className="px-8 py-3.5 bg-background border border-border text-foreground rounded-xl font-medium hover:bg-secondary transition-colors duration-300"
+              className="px-8 py-3.5 bg-white/10 border border-white/30 text-white rounded-xl font-bold hover:bg-white/20 transition-colors duration-300 backdrop-blur-sm"
             >
               View All Projects
             </Link>
           </div>
         </div>
+
       </div>
     </section>
   );

@@ -1,5 +1,13 @@
 import { Code2, Clock, ShieldCheck, Handshake } from "lucide-react";
 
+// Har icon ke liye alag color (jaise image mein hai)
+const iconColors = [
+  "bg-blue-500", 
+  "bg-pink-600", 
+  "bg-emerald-500", 
+  "bg-orange-500"
+];
+
 export function WhyWorkWithMe() {
   const stats = [
     { value: "7+", label: "Live Products" },
@@ -31,42 +39,53 @@ export function WhyWorkWithMe() {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-card border-y border-border">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
-          <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground mb-4 block">
+    <section className="py-20 md:py-28 bg-[#f8fafc] dark:bg-zinc-950 border-y border-zinc-200 dark:border-zinc-800">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
+        
+        {/* HEADER SECTION */}
+        <div className="text-center mb-14">
+          <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-500 dark:text-zinc-400 mb-3 block">
             The Studio Advantage
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground font-heading">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 font-heading mb-4">
             Why Work With Me
           </h2>
+          <p className="text-zinc-500 dark:text-zinc-400 text-[15px] max-w-2xl mx-auto font-normal">
+            The principles that drive our culture, our work, and our relationships
+          </p>
         </div>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        {/* STATS ROW */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {stats.map((stat, i) => (
-            <div key={i} className="text-center p-8 bg-background border border-border rounded-xl">
-              <div className="text-5xl font-bold font-heading text-foreground mb-2">{stat.value}</div>
-              <div className="text-xs font-bold tracking-widest uppercase text-muted-foreground">
+            <div key={i} className="text-center p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="text-4xl font-bold font-heading text-zinc-900 dark:text-white mb-1">{stat.value}</div>
+              <div className="text-[11px] font-bold tracking-widest uppercase text-zinc-500 dark:text-zinc-400">
                 {stat.label}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Value Props Grid */}
+        {/* VALUES CARDS GRID (Bilkul Image jaisa Design) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {valueProps.map((prop, i) => (
-            <div key={i} className="flex items-start gap-6 p-8 bg-background border border-border rounded-xl hover-minimal">
-              <div className="w-12 h-12 shrink-0 bg-secondary rounded-lg flex items-center justify-center">
-                <prop.icon className="w-6 h-6 text-foreground" />
+            <div 
+              key={i} 
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-7 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
+            >
+              {/* Colorful Rounded Icon Box (Exactly like image) */}
+              <div className={`w-14 h-14 ${iconColors[i]} rounded-2xl flex items-center justify-center mb-5 shadow-md`}>
+                <prop.icon className="w-7 h-7 text-white" strokeWidth={2.5} />
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-foreground mb-2 font-heading">{prop.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {prop.desc}
-                </p>
-              </div>
+
+              {/* TEXT CONTENT (Unchanged) */}
+              <h3 className="text-[20px] font-bold text-zinc-900 dark:text-zinc-100 mb-2.5 font-heading tracking-tight">
+                {prop.title}
+              </h3>
+              <p className="text-zinc-500 dark:text-zinc-400 text-[15px] leading-relaxed font-normal">
+                {prop.desc}
+              </p>
             </div>
           ))}
         </div>

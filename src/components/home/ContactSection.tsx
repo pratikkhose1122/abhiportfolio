@@ -85,23 +85,25 @@ export function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Full Name *</label>
-                  <Input required placeholder="John Doe" className="bg-card border-border h-12" />
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</label>
+                  <Input required placeholder="John Doe" className="bg-card border-border h-12 rounded-xl" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Email *</label>
-                  <Input required type="email" placeholder="john@example.com" className="bg-card border-border h-12" />
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email *</label>
+                  <Input required type="email" placeholder="john@example.com" className="bg-card border-border h-12 rounded-xl" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Service Required *</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Service Required *</label>
+                  {/* Height auto increment z-index fix kiya hai taaki dropdown page par cover na kare */}
                   <Select required>
-                    <SelectTrigger className="bg-card border-border h-12">
+                    <SelectTrigger className="bg-card border-border h-12 rounded-xl relative z-10">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
-                    <SelectContent>
+                    {/* Dropdown positioning fix kiya taaki wo cut na dikhe */}
+                    <SelectContent className="bg-white dark:bg-zinc-900 border border-border rounded-xl shadow-xl z-50 max-h-[300px]">
                       <SelectItem value="mobile">Mobile App Development</SelectItem>
                       <SelectItem value="web">Web Application</SelectItem>
                       <SelectItem value="saas">SaaS Platform</SelectItem>
@@ -110,12 +112,12 @@ export function ContactSection() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Estimated Budget *</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Estimated Budget *</label>
                   <Select required>
-                    <SelectTrigger className="bg-card border-border h-12">
+                    <SelectTrigger className="bg-card border-border h-12 rounded-xl">
                       <SelectValue placeholder="Select budget range" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white dark:bg-zinc-900 border border-border rounded-xl shadow-xl z-50 max-h-[300px]">
                       <SelectItem value="small">Less than $5,000</SelectItem>
                       <SelectItem value="medium">$5,000 - $10,000</SelectItem>
                       <SelectItem value="large">$10,000+</SelectItem>
@@ -125,14 +127,14 @@ export function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Project Details *</label>
-                <Textarea required placeholder="Tell me about your project, goals, and timeline..." className="bg-card border-border min-h-[150px] resize-none" />
+                <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Project Details *</label>
+                <Textarea required placeholder="Tell me about your project, goals, and timeline..." className="bg-card border-border min-h-[150px] resize-none rounded-xl" />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-foreground text-background rounded-xl font-medium hover-minimal disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:border-transparent transition-all"
+                className="w-full py-4 bg-foreground text-background rounded-xl font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {isSubmitting ? "Sending..." : "Submit Inquiry"}
               </button>
