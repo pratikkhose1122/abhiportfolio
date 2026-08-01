@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Smartphone, MonitorSmartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Smartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
 
 export default function Services() {
   const services = [
@@ -105,7 +105,7 @@ export default function Services() {
         {/* Closing CTA */}
         <div className="mt-32 bg-card border border-border rounded-xl p-8 md:p-12 text-center">
           <h3 className="text-2xl font-bold font-heading mb-4">Not sure which service fits?</h3>
-          <p className="text-muted-foreground mb-8">Let's hop on a brief call. I'll listen to your goals and recommend the best technical approach, even if we don't end up working together.</p>
+          <p className="text-muted-foreground mb-8">Let&apos;s hop on a brief call. I&apos;ll listen to your goals and recommend the best technical approach, even if we don&apos;t end up working together.</p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-background border border-border text-foreground rounded-xl font-medium hover:bg-secondary transition-colors duration-300"

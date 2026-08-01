@@ -64,7 +64,7 @@ export default function About() {
 
         <div className="bg-card border border-border rounded-xl p-8 md:p-12 text-center">
           <h3 className="text-2xl font-bold font-heading mb-4">Ready to start?</h3>
-          <p className="text-muted-foreground mb-8">Let's discuss how my expertise can accelerate your project.</p>
+          <p className="text-muted-foreground mb-8">Let&apos;s discuss how my expertise can accelerate your project.</p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-foreground text-background rounded-xl font-medium hover-minimal"

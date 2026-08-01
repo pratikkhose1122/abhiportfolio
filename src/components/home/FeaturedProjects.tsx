@@ -99,7 +99,7 @@ export function FeaturedProjects() {
             Want results like this?
           </h3>
           <p className="text-muted-foreground mb-8">
-            Let's discuss how we can build your next big idea.
+            Let&apos;s discuss how we can build your next big idea.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link

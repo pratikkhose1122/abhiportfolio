@@ -36,10 +36,10 @@ export function ContactSection() {
               Get in Touch
             </span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground font-heading mb-6">
-              Let's build something <span className="text-accent-blue">great together.</span>
+              Let&apos;s build something <span className="text-accent-blue">great together.</span>
             </h2>
             <p className="text-muted-foreground mb-12 max-w-md leading-relaxed">
-              Fill out the form with your project details, and I'll get back to you within 24 hours to schedule a free strategy call.
+              Fill out the form with your project details, and I&apos;ll get back to you within 24 hours to schedule a free strategy call.
             </p>
 
             <div className="space-y-8">

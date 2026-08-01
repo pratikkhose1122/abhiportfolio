@@ -103,7 +103,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         <div className="bg-foreground text-background rounded-2xl p-8 md:p-12 text-center">
           <h3 className="text-2xl md:text-3xl font-bold font-heading mb-4">Need similar results?</h3>
           <p className="text-background/70 mb-8 max-w-md mx-auto">
-            Let's discuss how we can build a scalable, high-performance solution for your business.
+            Let&apos;s discuss how we can build a scalable, high-performance solution for your business.
           </p>
           <Link
             href="/contact"

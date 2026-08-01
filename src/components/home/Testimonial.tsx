@@ -39,7 +39,7 @@ export function Testimonial() {
               className="absolute inset-0 flex flex-col items-center justify-center"
             >
               <p className="text-xl md:text-3xl font-heading font-medium text-foreground leading-relaxed mb-8">
-                "{testimonials[index].quote}"
+                &quot;{testimonials[index].quote}&quot;
               </p>
               <div>
                 <div className="font-bold text-foreground text-sm uppercase tracking-widest mb-1">
