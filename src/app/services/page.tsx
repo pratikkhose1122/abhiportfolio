@@ -34,7 +34,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="pt-12 md:pt-20 pb-24 md:pb-32 bg-background min-h-screen">
+    <div className="pt-12 md:pt-20 pb-24 md:pb-32 min-h-screen">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         
         <div className="text-center mb-24">

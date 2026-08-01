@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="pt-12 md:pt-20 pb-24 md:pb-32 bg-background min-h-screen">
+    <div className="pt-12 md:pt-20 pb-24 md:pb-32 min-h-screen">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         <div className="mb-16">
           <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground mb-4 block">

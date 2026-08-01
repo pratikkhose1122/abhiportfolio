@@ -7,7 +7,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
   const projectName = slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
   return (
-    <div className="pt-12 md:pt-20 pb-24 md:pb-32 bg-background min-h-screen">
+    <div className="pt-12 md:pt-20 pb-24 md:pb-32 min-h-screen">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-bold text-muted-foreground hover:text-foreground transition-colors mb-12 group">
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
