@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Smartphone, MonitorSmartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, Smartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 
 // Animation variants fixed
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -176,7 +176,7 @@ export default function Services() {
             Not sure which service fits?
           </h3>
           <p className="text-blue-100/90 mb-8 text-lg max-w-xl">
-            Let's hop on a brief call. I'll listen to your goals and recommend the best technical approach, even if we don't end up working together.
+            Let&apos;s hop on a brief call. I&apos;ll listen to your goals and recommend the best technical approach, even if we don&apos;t end up working together.
           </p>
           <Link
             href="/contact"
