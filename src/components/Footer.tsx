@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SITE_CONFIG, getWhatsAppUrl } from "@/lib/constants";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,17 +19,30 @@ export function Footer() {
               Abhijit Mungase
             </Link>
             <p className="text-blue-100/80 mb-4 max-w-sm text-sm md:text-base">
-              Software Developer building production-ready mobile apps, SaaS platforms, and business software.
+              Software Developer & Cinematographer building production-ready apps, SaaS platforms, and luxury wedding films.
             </p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-              <span className="text-sm font-medium text-white">Available for new projects</span>
+              <span className="text-sm font-medium text-white">Available for new projects & shoots</span>
             </div>
-            <div className="flex items-center gap-2 mt-2 text-sm text-blue-100/80">
-              <Mail size={16} />
-              <a href="mailto:abhijitmungase608@gmail.com" className="hover:text-white transition-colors">
-                abhijitmungase608@gmail.com
-              </a>
+            <div className="flex flex-col gap-2 mt-3 text-sm text-blue-100/80">
+              <div className="flex items-center gap-2">
+                <Mail size={16} />
+                <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-white transition-colors">
+                  {SITE_CONFIG.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <MessageCircle size={16} className="text-emerald-400" />
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white text-emerald-400 font-medium transition-colors"
+                >
+                  WhatsApp: {SITE_CONFIG.whatsappFormatted}
+                </a>
+              </div>
             </div>
           </div>
 

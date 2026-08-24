@@ -9,6 +9,7 @@ import { Testimonial } from "@/components/home/Testimonial";
 import { FAQ } from "@/components/home/FAQ";
 import { ContactSection } from "@/components/home/ContactSection";
 
+
 export default function Home() {
   return (
     <>

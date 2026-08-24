@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   description: "Boutique Dev Studio by Abhijit Mungase.",
 };
 
+import { AppClientWrapper } from "@/components/AppClientWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,11 +36,13 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex-1 flex flex-col relative pt-24">
-            {children}
-          </main>
-          <Footer />
+          <AppClientWrapper>
+            <Navbar />
+            <main className="flex-1 flex flex-col relative pt-24 pb-16">
+              {children}
+            </main>
+            <Footer />
+          </AppClientWrapper>
         </ThemeProvider>
       </body>
     </html>
