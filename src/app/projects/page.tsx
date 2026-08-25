@@ -11,7 +11,6 @@ export default function Projects() {
       tech: ["Next.js", "React Native", "Firebase"],
       slug: "my-kids-learning",
       icon: GraduationCap,
-      // Design change: Solid colors bilkul image jaisa
       boxColor: "bg-blue-500",
     },
     {
@@ -82,13 +81,16 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {projects.map((project, i) => (
-            <div key={i} className="flex flex-col h-full bg-card border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div 
+              key={i} 
+              className="group flex flex-col h-full bg-card border border-border rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+            >
               
               {/* Image/Icon Area */}
               <div className="aspect-[4/3] bg-secondary w-full relative flex items-center justify-center">
                 
                 {/* Solid Color Icon Box (Bilkul pehli image jaisa design) */}
-                <div className={`w-16 h-16 ${project.boxColor} rounded-xl flex items-center justify-center shadow-md transition-transform hover:scale-105 duration-300`}>
+                <div className={`w-16 h-16 ${project.boxColor} rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
                   <project.icon className="w-8 h-8 text-white" strokeWidth={2} />
                 </div>
                 

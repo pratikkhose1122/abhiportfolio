@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, MessageCircle } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
+  { name: "Photography", href: "/photography" },
   { name: "About", href: "/about" },
 ];
 
@@ -58,12 +60,13 @@ export function Navbar() {
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors p-2"
                 aria-label="Toggle Theme"
               >
                 {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
               </button>
             )}
+
             <Link
               href="/contact"
               className="px-5 py-2.5 bg-foreground text-background rounded-full text-sm font-medium hover-minimal"
@@ -111,13 +114,25 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 bg-foreground text-background text-center rounded-xl font-medium"
-            >
-              Start a Project
-            </Link>
+            <div className="flex flex-col gap-3">
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3 bg-[#25D366] text-white text-center rounded-xl font-medium flex items-center justify-center gap-2 shadow-md"
+              >
+                <MessageCircle size={18} className="fill-white" />
+                Chat on WhatsApp
+              </a>
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3 bg-foreground text-background text-center rounded-xl font-medium"
+              >
+                Start a Project
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

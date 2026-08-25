@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Clock, MapPin } from "lucide-react";
+import { Mail, Clock, MapPin, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { SITE_CONFIG, getWhatsAppUrl } from "@/lib/constants";
 import {
   Select,
   SelectContent,
@@ -14,21 +15,34 @@ import {
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    service: "web",
+    budget: "$5,000 - $10,000",
+    details: "",
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
+    const text = `💻 *NEW INQUIRY FROM PORTFOLIO* 💻
+👤 *Name:* ${formData.name}
+📧 *Email:* ${formData.email}
+🛠️ *Service:* ${formData.service}
+💰 *Budget:* ${formData.budget}
+📝 *Details:* ${formData.details}`;
+
+    window.open(getWhatsAppUrl(text), "_blank");
     setTimeout(() => {
       setIsSubmitting(false);
-      alert("Message sent! (Simulation)");
-    }, 1500);
+    }, 1000);
   };
 
   return (
-    <section className="py-24 md:py-32 bg-card">
+    <section className="py-20 md:py-28 bg-card">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           
           {/* Info Side */}
           <div>
@@ -38,19 +52,36 @@ export function ContactSection() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground font-heading mb-6">
               Let&apos;s build something <span className="text-accent-blue">great together.</span>
             </h2>
-            <p className="text-muted-foreground mb-12 max-w-md leading-relaxed">
-              Fill out the form with your project details, and I&apos;ll get back to you within 24 hours to schedule a free strategy call.
+            <p className="text-muted-foreground mb-10 max-w-md leading-relaxed">
+              Fill out the form or drop a quick WhatsApp message. I usually respond within minutes to discuss your timeline and roadmap.
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-0.5">WhatsApp Direct</div>
+                  <a
+                    href={getWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-emerald-500 hover:text-emerald-400 transition-colors"
+                  >
+                    {SITE_CONFIG.whatsappFormatted} (Instant Chat)
+                  </a>
+                </div>
+              </div>
+
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center">
                   <Mail className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Email</div>
-                  <a href="mailto:abhijitmungase608@gmail.com" className="font-medium text-foreground hover:text-accent-blue transition-colors">
-                    abhijitmungase608@gmail.com
+                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-0.5">Email</div>
+                  <a href={`mailto:${SITE_CONFIG.email}`} className="font-medium text-foreground hover:text-accent-blue transition-colors">
+                    {SITE_CONFIG.email}
                   </a>
                 </div>
               </div>
@@ -60,8 +91,8 @@ export function ContactSection() {
                   <MapPin className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Location</div>
-                  <div className="font-medium text-foreground">Maharashtra, India (Remote)</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-0.5">Location</div>
+                  <div className="font-medium text-foreground">{SITE_CONFIG.location}</div>
                 </div>
               </div>
 
@@ -70,10 +101,10 @@ export function ContactSection() {
                   <Clock className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Availability</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-0.5">Availability</div>
                   <div className="font-medium text-foreground flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                    Available for new projects
+                    Available for new projects & shoots
                   </div>
                 </div>
               </div>
@@ -81,46 +112,65 @@ export function ContactSection() {
           </div>
 
           {/* Form Side */}
-          <div className="bg-background border border-border p-8 md:p-10 rounded-2xl">
+          <div className="bg-background border border-border p-8 md:p-10 rounded-3xl shadow-lg">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</label>
-                  <Input required placeholder="John Doe" className="bg-card border-border h-12 rounded-xl" />
+                  <Input
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="e.g. Rahul Sharma"
+                    className="bg-card border-border h-12 rounded-xl"
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email *</label>
-                  <Input required type="email" placeholder="john@example.com" className="bg-card border-border h-12 rounded-xl" />
+                  <Input
+                    required
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="rahul@example.com"
+                    className="bg-card border-border h-12 rounded-xl"
+                  />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Service Required *</label>
-                  {/* Height auto increment z-index fix kiya hai taaki dropdown page par cover na kare */}
-                  <Select required>
+                  <Select
+                    defaultValue={formData.service}
+                    onValueChange={(val) => setFormData({ ...formData, service: val })}
+                  >
                     <SelectTrigger className="bg-card border-border h-12 rounded-xl relative z-10">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
-                    {/* Dropdown positioning fix kiya taaki wo cut na dikhe */}
                     <SelectContent className="bg-white dark:bg-zinc-900 border border-border rounded-xl shadow-xl z-50 max-h-[300px]">
-                      <SelectItem value="mobile">Mobile App Development</SelectItem>
-                      <SelectItem value="web">Web Application</SelectItem>
-                      <SelectItem value="saas">SaaS Platform</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="Mobile App Development">Mobile App Development</SelectItem>
+                      <SelectItem value="Web Application">Web Application</SelectItem>
+                      <SelectItem value="SaaS Platform">SaaS Platform</SelectItem>
+                      <SelectItem value="Photography & Drone Films">Photography & Drone Films</SelectItem>
+                      <SelectItem value="Other">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Estimated Budget *</label>
-                  <Select required>
+                  <Select
+                    defaultValue={formData.budget}
+                    onValueChange={(val) => setFormData({ ...formData, budget: val })}
+                  >
                     <SelectTrigger className="bg-card border-border h-12 rounded-xl">
                       <SelectValue placeholder="Select budget range" />
                     </SelectTrigger>
                     <SelectContent className="bg-white dark:bg-zinc-900 border border-border rounded-xl shadow-xl z-50 max-h-[300px]">
-                      <SelectItem value="small">Less than $5,000</SelectItem>
-                      <SelectItem value="medium">$5,000 - $10,000</SelectItem>
-                      <SelectItem value="large">$10,000+</SelectItem>
+                      <SelectItem value="Less than ₹50,000">Less than ₹50,000</SelectItem>
+                      <SelectItem value="₹50,000 - ₹1,50,000">₹50,000 - ₹1,50,000</SelectItem>
+                      <SelectItem value="₹1,50,000 - ₹3,00,000">₹1,50,000 - ₹3,00,000</SelectItem>
+                      <SelectItem value="₹3,00,000+">₹3,00,000+</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -128,19 +178,26 @@ export function ContactSection() {
 
               <div className="space-y-2">
                 <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Project Details *</label>
-                <Textarea required placeholder="Tell me about your project, goals, and timeline..." className="bg-card border-border min-h-[150px] resize-none rounded-xl" />
+                <Textarea
+                  required
+                  value={formData.details}
+                  onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                  placeholder="Tell me about your project or shoot goals, timeline, and expectations..."
+                  className="bg-card border-border min-h-[140px] resize-none rounded-xl"
+                />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-foreground text-background rounded-xl font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
               >
-                {isSubmitting ? "Sending..." : "Submit Inquiry"}
+                <MessageCircle size={18} className="fill-white" />
+                {isSubmitting ? "Opening WhatsApp..." : "Send Inquiry via WhatsApp"}
               </button>
               
-              <p className="text-xs text-muted-foreground text-center mt-4">
-                Your information is secure and will never be shared with third parties.
+              <p className="text-xs text-muted-foreground text-center mt-3">
+                Direct WhatsApp contact: <strong className="text-foreground">{SITE_CONFIG.whatsappFormatted}</strong>
               </p>
             </form>
           </div>
