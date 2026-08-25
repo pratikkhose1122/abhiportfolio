@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { motion, PanInfo } from "framer-motion";
+import { motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight, Camera } from "lucide-react";
 
 // Real High-Res Photography Portfolio Images
@@ -15,9 +15,8 @@ const images = [
   { id: 6, src: "/DSC07314 copy.jpg", title: "Sacred Mandap Decor", desc: "Floral Art & Heritage", count: "60+ Photos" },
 ];
 
-export default function PhotographyCarousel() {
+export function PhotographyCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -28,8 +27,7 @@ export default function PhotographyCarousel() {
   };
 
   // Drag handling (touch & mouse swipe)
-  const handleDragEnd = (event: any, info: PanInfo) => {
-    setIsDragging(false);
+  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.x < -40) {
       handleNext();
     } else if (info.offset.x > 40) {
@@ -50,7 +48,7 @@ export default function PhotographyCarousel() {
             Cinematic Photography & Drone
           </h2>
           <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto mt-2">
-            Capturing the grandeur of royal Indian weddings and cinematic stories across Earth & Sky.
+            Capturing the grandeur of royal Indian weddings and cinematic stories across Earth &amp; Sky.
           </p>
         </div>
 
@@ -75,7 +73,6 @@ export default function PhotographyCarousel() {
                 key={img.id}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
-                onDragStart={() => setIsDragging(true)}
                 onDragEnd={handleDragEnd}
                 animate={{
                   x: xPos,
@@ -154,3 +151,5 @@ export default function PhotographyCarousel() {
     </section>
   );
 }
+
+export default PhotographyCarousel;
