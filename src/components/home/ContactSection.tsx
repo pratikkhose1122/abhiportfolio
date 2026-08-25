@@ -50,7 +50,7 @@ export function ContactSection() {
               Get in Touch
             </span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground font-heading mb-6">
-              Let's build something <span className="text-accent-blue">great together.</span>
+              Let&apos;s build something <span className="text-accent-blue">great together.</span>
             </h2>
             <p className="text-muted-foreground mb-10 max-w-md leading-relaxed">
               Fill out the form or drop a quick WhatsApp message. I usually respond within minutes to discuss your timeline and roadmap.

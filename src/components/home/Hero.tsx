@@ -26,14 +26,6 @@ const itemVars: Variants = {
 export function Hero() {
   return (
     <section className="relative min-h-[calc(100dvh-6rem)] md:min-h-[calc(100vh-6rem)] flex flex-col items-center justify-center overflow-hidden w-full">
-      {/* Subtle Background Texture - dot grid */}
-      <div 
-        className="absolute inset-0 z-0 opacity-[0.05]" 
-        style={{
-          backgroundImage: 'radial-gradient(circle at center, var(--foreground) 1px, transparent 1px)',
-          backgroundSize: '24px 24px'
-        }}
-      />
       
       <motion.div 
         className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center w-full"

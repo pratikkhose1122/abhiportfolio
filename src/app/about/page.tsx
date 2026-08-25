@@ -3,7 +3,7 @@ import { ArrowRight, Camera, Heart, Calendar } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="pt-12 md:pt-20 pb-24 md:pb-32 bg-background min-h-screen">
+    <div className="pt-12 md:pt-20 pb-24 md:pb-32 min-h-screen">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         
         {/* Main Developer Bio */}
@@ -26,7 +26,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Developer Stats (Unchanged) */}
+        {/* Developer Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 border-y border-border py-12">
           <div className="text-center">
             <div className="text-5xl font-bold font-heading text-foreground mb-2">7+</div>
@@ -42,7 +42,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* ✅ NEW: Photography & Cinematography Section */}
+        {/* Photography & Cinematography Section */}
         <div className="mb-20">
           <div className="flex items-center gap-2 mb-6">
             <span className="w-8 h-px bg-muted-foreground/30" />
@@ -55,10 +55,10 @@ export default function About() {
           
           <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed space-y-6">
             <p>
-              I am a passionate photographer and cinematographer based in Ahilyanagar, Pune. With over 4 years of experience in capturing life's most precious moments, I specialize in wedding photography, cinematic drone films, and creative portraiture.
+              I am a passionate photographer and cinematographer based in Ahilyanagar, Pune. With over 4 years of experience in capturing life&apos;s most precious moments, I specialize in wedding photography, cinematic drone films, and creative portraiture.
             </p>
             <p>
-              My philosophy is simple: <span className="text-foreground font-medium">"Every picture tells a story."</span> 
+              My philosophy is simple: <span className="text-foreground font-medium">&ldquo;Every picture tells a story.&rdquo;</span> 
               I strive to create timeless images that reflect the beauty, emotion, and grandeur of every occasion.
             </p>
           </div>
@@ -94,13 +94,13 @@ export default function About() {
           </div>
         </div>
 
-        {/* ✅ CTA SECTION - UPDATED TO GRADIENT (Image 2) */}
+        {/* CTA SECTION */}
         <div className="bg-gradient-to-r from-[#4F1A81] via-[#1A4A8A] to-[#00C2FF] rounded-2xl p-10 md:p-14 text-center flex flex-col items-center shadow-lg">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-heading max-w-2xl leading-tight">
             Ready to start?
           </h3>
           <p className="text-blue-100/90 mb-8 text-lg max-w-xl">
-            Let's discuss how my expertise can accelerate your project.
+            Let&apos;s discuss how my expertise can accelerate your project.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">

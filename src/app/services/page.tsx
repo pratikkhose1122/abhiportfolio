@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Smartphone, MonitorSmartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Smartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 
 const fadeInUp: Variants = {
@@ -182,7 +182,9 @@ export default function Services() {
           className="mt-32 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 md:p-12 text-center shadow-sm"
         >
           <h3 className="text-2xl font-bold font-heading text-zinc-900 dark:text-white mb-4">Not sure which service fits?</h3>
-          <p className="text-zinc-500 dark:text-zinc-400 mb-8">Let's hop on a brief call. I'll listen to your goals and recommend the best technical approach, even if we don't end up working together.</p>
+          <p className="text-zinc-500 dark:text-zinc-400 mb-8">
+            Let&apos;s hop on a brief call. I&apos;ll listen to your goals and recommend the best technical approach, even if we don&apos;t end up working together.
+          </p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white rounded-xl font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-300"
