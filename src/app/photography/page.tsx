@@ -1,109 +1,101 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import {
   ChevronLeft,
   ChevronRight,
   Camera,
   Heart,
   Calendar,
-  Maximize2,
   X,
   MessageCircle,
-  Sparkles,
-  Film,
-  Compass,
-  Check,
-  Play,
-  Pause,
 } from "lucide-react";
 import { motion, AnimatePresence, PanInfo, type Variants } from "framer-motion";
 import { WeddingEnquiryForm } from "@/components/photography/WeddingEnquiryForm";
 import { SITE_CONFIG, getWhatsAppUrl } from "@/lib/constants";
 
-// 🔥 IMAGES ARRAY WITH RICH DESCRIPTIONS & CATEGORIES
+// 🔥 IMAGES ARRAY WITH CATEGORIES (Wedding & Pre-Wedding)
 const images = [
   {
     id: 1,
     src: "/DSC01961.jpg",
-    title: "Royal Heritage Wedding",
+    title: "",
     desc: "Sacred pheras & royal ceremonies captured with classical elegance.",
-    category: "Wedding",
+    category: "Sacred pheras & royal ceremonies captured with classical elegance.",
   },
   {
     id: 2,
     src: "/DSC01985.jpg",
-    title: "Candid Bride Portrait",
+    title: "",
     desc: "Timeless bridal glow and emotion in pure natural light.",
-    category: "Portraits",
+    category: "Timeless bridal glow and emotion in pure natural light.",
   },
   {
     id: 3,
     src: "/DSC02584.JPG",
-    title: "Sunset Pre-Wedding",
+    title: "",
     desc: "Dreamy golden hour romance and cinematic compositions.",
-    category: "Pre-Wedding",
+    category: "Dreamy golden hour romance and cinematic compositions.",
   },
   {
     id: 4,
     src: "/DSC02691.JPG",
-    title: "Haldi Vibrance & Joy",
+    title: "",
     desc: "Colors, authentic smiles, and energetic festive rituals.",
-    category: "Festivities",
+    category: "Colors, authentic smiles, and energetic festive rituals.",
   },
   {
     id: 5,
     src: "/DSC07290 copy.jpg",
-    title: "Cinematic Drone Vista",
+    title: "",
     desc: "Grand aerial perspectives capturing the full venue architecture.",
-    category: "Aerial",
+    category: "Grand aerial perspectives capturing the full venue architecture.",
   },
   {
     id: 6,
     src: "/DSC07314 copy.jpg",
-    title: "Sacred Mandap Moments",
+    title: "",
     desc: "Intimate vows and royal mandap florals crafted to perfection.",
-    category: "Wedding",
+    category: "Intimate vows and royal mandap florals crafted to perfection.",
   },
   {
     id: 7,
     src: "/DSC07319 copy.jpg",
-    title: "Grand Reception Evening",
+    title: "",
     desc: "Stunning couple entry with modern stage lights and sparkle.",
-    category: "Reception",
+    category: "Stunning couple entry with modern stage lights and sparkle.",
   },
   {
     id: 8,
     src: "/DSC07330 copy.jpg",
-    title: "Editorial Couple Portrait",
+    title: "",
     desc: "Magazine-grade posing and bespoke editorial color tones.",
-    category: "Editorial",
+    category: "Magazine-grade posing and bespoke editorial color tones.",
   },
   {
     id: 9,
     src: "/DSC07363 copy.jpg",
-    title: "Sangeet & Celebration",
+    title: "",
     desc: "High-octane dance performances and heartfelt family moments.",
-    category: "Festivities",
+    category: "High-octane dance performances and heartfelt family moments.",
   },
   {
     id: 10,
     src: "/DSC07631 copy.jpg",
-    title: "Destination Romance",
+    title: "",
     desc: "Breathtaking backdrops across Pune, Ahilyanagar & beyond.",
-    category: "Pre-Wedding",
+    category: "Breathtaking backdrops across Pune, Ahilyanagar & beyond.",
   },
   {
     id: 11,
     src: "/DSC07674 copy.jpg",
-    title: "Timeless Family Heirloom",
+    title: "",
     desc: "Generational blessings captured with emotional depth.",
-    category: "Candid",
+    category: "Generational blessings captured with emotional depth.",
   },
 ];
 
-const CATEGORIES = ["All", "Wedding", "Pre-Wedding", "Portraits", "Festivities", "Aerial"];
+const CATEGORIES = ["All", "Wedding", "Pre-Wedding"];
 
 // 🔥 ANIMATION VARIANTS
 const containerVariants: Variants = {
@@ -168,25 +160,11 @@ export default function PhotographyPage() {
 
   return (
     <div className="relative min-h-screen w-full bg-[#f7f3f0] overflow-hidden flex flex-col items-center pt-14 md:pt-24 pb-28 px-3 sm:px-6 md:px-12">
-      {/* 🔥 BLURRED BACKGROUND AMBIENT IMAGE */}
-      <div className="absolute inset-0 z-0 pointer-events-none h-full">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <img
-              src={images[currentIndex].src}
-              alt="Blurred Background"
-              className="w-full h-full object-cover blur-[60px] opacity-20 scale-110"
-            />
-            <div className="absolute inset-0 bg-[#f7f3f0]/85" />
-          </motion.div>
-        </AnimatePresence>
+      {/* Ambient Atmospheric Glow */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#a07355]/15 via-[#b78c7a]/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -left-20 w-[500px] h-[500px] bg-[#a07355]/10 rounded-full blur-3xl" />
+        <div className="absolute top-2/3 -right-20 w-[500px] h-[500px] bg-[#b78c7a]/10 rounded-full blur-3xl" />
       </div>
 
       {/* ✅ SECTION 1: HEADER CAPTION */}
@@ -292,11 +270,15 @@ export default function PhotographyPage() {
                   zIndex: zIndex,
                 }}
                 transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                className={`absolute w-[220px] sm:w-[320px] md:w-[420px] aspect-[4/5] rounded-3xl shadow-2xl overflow-hidden group select-none ${isCenter ? "ring-4 ring-[#a07355] ring-offset-4 ring-offset-[#f7f3f0]" : "cursor-pointer"
+                className={`absolute w-[220px] sm:w-[320px] md:w-[420px] aspect-[4/5] rounded-3xl shadow-2xl overflow-hidden group select-none ${isCenter ? "ring-4 ring-[#a07355] ring-offset-4 ring-offset-[#f7f3f0] cursor-pointer" : "cursor-pointer"
                   }`}
                 style={{ transformOrigin: "center center" }}
                 onClick={() => {
-                  if (!isCenter) setCurrentIndex(index);
+                  if (isCenter) {
+                    setLightboxImage(img);
+                  } else {
+                    setCurrentIndex(index);
+                  }
                 }}
               >
                 <img
@@ -304,57 +286,8 @@ export default function PhotographyPage() {
                   alt={img.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
-
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-
-                {/* Category Badge (Top Right) */}
-                <div className="absolute top-4 right-4">
-                  <span className="text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-white/90 border border-white/20">
-                    {img.category}
-                  </span>
-                </div>
-
-                {/* Lightbox Trigger on Center */}
-                {isCenter && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setLightboxImage(img);
-                    }}
-                    className="absolute top-4 left-4 p-2 bg-black/40 hover:bg-black/70 backdrop-blur-md rounded-full text-white/90 border border-white/20 transition-all cursor-pointer"
-                    title="View Full Resolution"
-                  >
-                    <Maximize2 size={15} />
-                  </button>
-                )}
-
-                {/* Caption on Center Card */}
-                {isCenter && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex items-end justify-between gap-3"
-                  >
-                    <div className="text-left">
-                      <h3 className="text-white text-base sm:text-xl md:text-2xl font-serif font-bold mb-0.5">
-                        {img.title}
-                      </h3>
-                      <p className="text-white/80 text-[11px] sm:text-xs line-clamp-2 max-w-xs">{img.desc}</p>
-                    </div>
-
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setLightboxImage(img);
-                      }}
-                      className="px-3 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 rounded-full text-white text-xs font-medium shrink-0 transition-colors cursor-pointer"
-                    >
-                      View
-                    </button>
-                  </motion.div>
-                )}
               </motion.div>
             );
           })}
@@ -395,7 +328,7 @@ export default function PhotographyPage() {
         </div>
       </div>
 
-      {/* ✅ SECTION 3: WEDDING ENQUIRY FORM (Screenshot 1) */}
+      {/* ✅ SECTION 3: WEDDING ENQUIRY FORM */}
       <WeddingEnquiryForm />
 
       {/* ✅ SECTION 4: FEATURED PORTFOLIO GRID WITH CATEGORY FILTERS */}
@@ -416,8 +349,8 @@ export default function PhotographyPage() {
                 key={cat}
                 onClick={() => setSelectedFilter(cat)}
                 className={`px-4 py-2 rounded-full text-xs font-medium transition-all ${selectedFilter === cat
-                    ? "bg-[#a07355] text-white shadow-md font-semibold"
-                    : "bg-white/80 border border-[#ded3ca] text-[#5c4f46] hover:bg-white"
+                  ? "bg-[#a07355] text-white shadow-md font-semibold"
+                  : "bg-white/80 border border-[#ded3ca] text-[#5c4f46] hover:bg-white"
                   }`}
               >
                 {cat}
@@ -444,27 +377,16 @@ export default function PhotographyPage() {
                   alt={img.title}
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-5 md:p-6 opacity-90 group-hover:opacity-100 transition-opacity">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#e8ded6] mb-1">
-                  {img.category}
-                </span>
+              {/* Clean Caption Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-5 md:p-6 opacity-90 group-hover:opacity-100 transition-opacity">
                 <h3 className="text-white text-lg sm:text-xl font-serif font-bold leading-snug">
                   {img.title}
                 </h3>
-                <p className="text-white/70 text-xs mt-1 line-clamp-2">{img.desc}</p>
-
-                <div className="mt-3 flex items-center justify-between pt-2 border-t border-white/15">
-                  <span className="text-[11px] text-white/90 flex items-center gap-1">
-                    <Maximize2 size={12} /> Click to View
-                  </span>
-                  <span className="text-[11px] text-[#25D366] font-medium flex items-center gap-1">
-                    <MessageCircle size={12} /> Inquire
-                  </span>
-                </div>
+                <p className="text-white/80 text-xs sm:text-sm mt-1">{img.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -518,64 +440,46 @@ export default function PhotographyPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-5xl mx-auto mt-14 md:mt-24 pt-8 md:pt-14 border-t border-[#e2d8d1]"
+        className="relative z-10 w-full max-w-4xl mx-auto mt-14 md:mt-24 pt-8 md:pt-14 border-t border-[#e2d8d1]"
       >
-        <div className="text-center mb-8 md:mb-14">
+        <div className="text-center mb-8 md:mb-10">
           <h2 className="text-3xl md:text-4xl font-serif text-[#2c2a28] mb-2">About the Photographer</h2>
           <div className="w-14 h-0.5 bg-[#a07355] mx-auto rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative aspect-square max-w-sm mx-auto w-full bg-white rounded-3xl overflow-hidden border border-[#ded3ca] shadow-xl"
-          >
-            <img src="/Abhi.jpg" alt="Abhijit Mungase" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
-              <div className="text-white">
-                <div className="font-serif font-bold text-xl">{SITE_CONFIG.name}</div>
-                <div className="text-xs text-white/80">Software Developer & Photographer  </div>
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl mx-auto text-center space-y-5"
+        >
+          <p className="text-[#6b5b50] text-sm md:text-base leading-relaxed">
+            I am a passionate photographer and cinematographer based in Ahilyanagar &amp; Pune. With over 4 years of experience capturing life's most precious occasions, I specialize in royal wedding photography, cinematic drone films, and timeless portraits.
+          </p>
+
+          <p className="text-[#6b5b50] text-sm md:text-base leading-relaxed">
+            My philosophy: <span className="text-[#2c2a28] font-serif font-bold italic">"Every picture is a sacred heirloom of love."</span> I blend state-of-the-art Sony cinema cameras and DJI drones with authentic Indian emotion.
+          </p>
+
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-4 max-w-lg mx-auto">
+            <div className="bg-white border border-[#ded3ca] rounded-2xl p-4 text-center shadow-xs">
+              <Camera className="mx-auto mb-1.5 text-[#a07355]" size={20} />
+              <div className="text-xl font-bold text-[#2c2a28]">250+</div>
+              <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#6b5b50] mt-0.5">Shoots</div>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-5"
-          >
-            <p className="text-[#6b5b50] text-sm md:text-base leading-relaxed">
-              I am a passionate photographer and cinematographer based in Ahilyanagar & Pune. With over 4 years of experience capturing life's most precious occasions, I specialize in royal wedding photography, cinematic drone films, and timeless portraits.
-            </p>
-
-            <p className="text-[#6b5b50] text-sm md:text-base leading-relaxed">
-              My philosophy: <span className="text-[#2c2a28] font-serif font-bold italic">"Every picture is a sacred heirloom of love."</span> I blend state-of-the-art Sony cinema cameras and DJI drones with authentic Indian emotion.
-            </p>
-
-            <div className="grid grid-cols-3 gap-3 pt-3">
-              <div className="bg-white border border-[#ded3ca] rounded-2xl p-4 text-center shadow-xs">
-                <Camera className="mx-auto mb-1.5 text-[#a07355]" size={20} />
-                <div className="text-xl font-bold text-[#2c2a28]">250+</div>
-                <div className="text-[9px] uppercase tracking-wider text-[#6b5b50] mt-0.5">Shoots</div>
-              </div>
-              <div className="bg-white border border-[#ded3ca] rounded-2xl p-4 text-center shadow-xs">
-                <Heart className="mx-auto mb-1.5 text-[#a07355]" size={20} />
-                <div className="text-xl font-bold text-[#2c2a28]">100%</div>
-                <div className="text-[9px] uppercase tracking-wider text-[#6b5b50] mt-0.5">Smiles</div>
-              </div>
-              <div className="bg-white border border-[#ded3ca] rounded-2xl p-4 text-center shadow-xs">
-                <Calendar className="mx-auto mb-1.5 text-[#a07355]" size={20} />
-                <div className="text-xl font-bold text-[#2c2a28]">4+</div>
-                <div className="text-[9px] uppercase tracking-wider text-[#6b5b50] mt-0.5">Years</div>
-              </div>
+            <div className="bg-white border border-[#ded3ca] rounded-2xl p-4 text-center shadow-xs">
+              <Heart className="mx-auto mb-1.5 text-[#a07355]" size={20} />
+              <div className="text-xl font-bold text-[#2c2a28]">100%</div>
+              <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#6b5b50] mt-0.5">Smiles</div>
             </div>
-          </motion.div>
-        </div>
+            <div className="bg-white border border-[#ded3ca] rounded-2xl p-4 text-center shadow-xs">
+              <Calendar className="mx-auto mb-1.5 text-[#a07355]" size={20} />
+              <div className="text-xl font-bold text-[#2c2a28]">4+</div>
+              <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#6b5b50] mt-0.5">Years</div>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
 
       {/* ✅ LIGHTBOX MODAL */}
