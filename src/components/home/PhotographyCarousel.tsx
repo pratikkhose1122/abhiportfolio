@@ -7,12 +7,17 @@ import { ChevronLeft, ChevronRight, ArrowRight, Camera } from "lucide-react";
 
 // Real High-Res Photography Portfolio Images
 const images = [
-  { id: 1, src: "/DSC01961.jpg", title: "Royal Heritage Wedding", desc: "Sacred Pheras & Rituals", count: "120+ Photos" },
-  { id: 2, src: "/DSC01985.jpg", title: "Candid Bridal Glow", desc: "Timeless Emotion & Light", count: "45+ Photos" },
-  { id: 3, src: "/DSC02584.JPG", title: "Sunset Pre-Wedding", desc: "Cinematic Golden Hour", count: "80+ Photos" },
-  { id: 4, src: "/DSC02691.JPG", title: "Haldi Vibrance", desc: "Joyful Colors & Celebration", count: "95+ Photos" },
-  { id: 5, src: "/DSC07290 copy.jpg", title: "Aerial Drone Vista", desc: "Grand Venue Perspectives", count: "4K Cinema" },
-  { id: 6, src: "/DSC07314 copy.jpg", title: "Sacred Mandap Decor", desc: "Floral Art & Heritage", count: "60+ Photos" },
+  { id: 1, src: "/DSC01961.jpg", title: "Royal Heritage Wedding", desc: "Sacred Pheras & Royal Traditions" },
+  { id: 2, src: "/DSC01985.jpg", title: "Candid Bridal Glow", desc: "Timeless Emotion & Natural Light" },
+  { id: 3, src: "/DSC02584.JPG", title: "Sunset Pre-Wedding", desc: "Cinematic Golden Hour Romance" },
+  { id: 4, src: "/DSC02691.JPG", title: "Haldi Festivities", desc: "Joyful Colors & Authentic Rituals" },
+  { id: 5, src: "/DSC07290 copy.jpg", title: "Cinematic Drone Vista", desc: "Grand Venue Perspectives & Aerials" },
+  { id: 6, src: "/DSC07314 copy.jpg", title: "Sacred Mandap Moments", desc: "Intimate Vows & Floral Art" },
+  { id: 7, src: "/DSC07319 copy.jpg", title: "Grand Reception Evening", desc: "Modern Stage Lights & Couple Entry" },
+  { id: 8, src: "/DSC07330 copy.jpg", title: "Editorial Couple Portrait", desc: "Magazine-Grade Composition & Tones" },
+  { id: 9, src: "/DSC07363 copy.jpg", title: "Sangeet & Celebration", desc: "High-Octane Energy & Family Dance" },
+  { id: 10, src: "/DSC07631 copy.jpg", title: "Destination Romance", desc: "Breathtaking Heritage Backdrops" },
+  { id: 11, src: "/DSC07674 copy.jpg", title: "Timeless Family Heirloom", desc: "Generational Blessings & Love" },
 ];
 
 export function PhotographyCarousel() {
@@ -38,7 +43,7 @@ export function PhotographyCarousel() {
   return (
     <section className="py-16 md:py-24 bg-background w-full overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 relative">
-        
+
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-semibold uppercase tracking-widest mb-3">
@@ -95,37 +100,8 @@ export function PhotographyCarousel() {
                   alt={img.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
+                  decoding="async"
                 />
-                
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-
-                {/* Caption (Visible on center card) */}
-                {isCenter && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3"
-                  >
-                    <div>
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-[#e8ded6] mb-0.5 block">
-                        {img.count}
-                      </span>
-                      <h3 className="text-white text-lg sm:text-2xl font-bold font-serif leading-tight">
-                        {img.title}
-                      </h3>
-                      <p className="text-white/70 text-xs mt-0.5">{img.desc}</p>
-                    </div>
-                    
-                    <Link
-                      href="/photography"
-                      className="px-3.5 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 rounded-full text-white text-xs font-semibold transition-colors shrink-0 flex items-center gap-1"
-                    >
-                      View All
-                      <ArrowRight size={12} />
-                    </Link>
-                  </motion.div>
-                )}
               </motion.div>
             );
           })}
@@ -146,6 +122,17 @@ export function PhotographyCarousel() {
         >
           <ChevronRight size={22} />
         </button>
+
+        {/* Bottom Action Link */}
+        <div className="text-center mt-8">
+          <Link
+            href="/photography"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#a07355] hover:bg-[#8b5e34] text-white rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+          >
+            Explore Full Photography Portfolio
+            <ArrowRight size={15} />
+          </Link>
+        </div>
 
       </div>
     </section>

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Search, X, ArrowRight, Camera, Smartphone, Server, FileText, User, Sparkles, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getWhatsAppUrl } from "@/lib/constants";
+import { SITE_CONFIG, getWhatsAppUrl } from "@/lib/constants";
 
 interface SpotlightProps {
   isOpen: boolean;
@@ -20,7 +20,7 @@ const SEARCH_ITEMS = [
   { title: "Company Attendance System", subtitle: "Enterprise HR attendance platform", href: "/projects", icon: FileText, category: "Projects" },
   { title: "About Abhijit", subtitle: "Experience, background, story", href: "/about", icon: User, category: "General" },
   { title: "Contact & Hire Me", subtitle: "Get in touch for new projects", href: "/contact", icon: Sparkles, category: "General" },
-  { title: "Chat on WhatsApp", subtitle: "Direct message to Abhijit (+91 93077 24194)", href: "whatsapp", isExternal: true, icon: MessageCircle, category: "Action" },
+  { title: "Chat on WhatsApp", subtitle: `Direct message to Abhijit (${SITE_CONFIG.whatsappFormatted})`, href: "whatsapp", isExternal: true, icon: MessageCircle, category: "Action" },
 ];
 
 export function SpotlightSearch({ isOpen, onClose }: SpotlightProps) {

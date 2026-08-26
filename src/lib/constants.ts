@@ -5,8 +5,8 @@ export const SITE_CONFIG = {
   description: "Boutique Dev Studio & Cinematic Photography by Abhijit Mungase.",
   location: "Ahilyanagar & Pune, Maharashtra, India",
   email: "abhijitmungase608@gmail.com",
-  // WhatsApp number (country code without + for wa.me link, formatted for display)
-  whatsappNumber: "8010947110",
+  // WhatsApp number (full international format without + for wa.me link, e.g. 918010947110)
+  whatsappNumber: "918010947110",
   whatsappFormatted: "+91 8010947110",
   instagramUrl: "https://instagram.com",
   linkedinUrl: "https://linkedin.com",
@@ -17,7 +17,11 @@ export const SITE_CONFIG = {
 export function getWhatsAppUrl(customMessage?: string) {
   const defaultMsg = "Hi Abhijit, I checked your portfolio and would like to discuss a project!";
   const msg = encodeURIComponent(customMessage || defaultMsg);
-  return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${msg}`;
+  let cleanNumber = (SITE_CONFIG.whatsappNumber || "918010947110").replace(/\D/g, "");
+  if (cleanNumber.length === 10) {
+    cleanNumber = `91${cleanNumber}`;
+  }
+  return `https://wa.me/${cleanNumber}?text=${msg}`;
 }
 
 // WhatsApp Quick Prompts
