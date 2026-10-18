@@ -1,40 +1,13 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink, GraduationCap, Users, UserCircle, Camera } from "lucide-react";
+import { PROJECTS, type Project } from "@/lib/projects";
 
-const projects = [
-  {
-    name: "My Kids Learning App",
-    industry: "EdTech",
-    status: "Live & Active",
-    description: "An intelligent learning and attendance management system designed for modern classrooms and parents.",
-    tech: ["Next.js", "React Native", "Firebase"],
-    slug: "my-kids-learning",
-  },
-  {
-    name: "Company Attendance System",
-    industry: "Enterprise",
-    status: "Production",
-    description: "A robust internal portal for tracking employee attendance, leaves, and generating automated HR reports.",
-    tech: ["React", "Node.js", "PostgreSQL"],
-    slug: "company-attendance-system",
-  },
-  {
-    name: "Premium Portfolio Website",
-    industry: "Personal Brand",
-    status: "Live",
-    description: "A conversion-focused, dark-mode portfolio built to showcase software engineering projects and attract premium clients.",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-    slug: "developer-portfolio",
-  },
-  {
-    name: "Photography Website",
-    industry: "Creative",
-    status: "Completed",
-    description: "A visually stunning, performance-optimized website designed to highlight high-resolution photography collections.",
-    tech: ["React", "Framer Motion", "Tailwind CSS"],
-    slug: "photography-website",
-  }
-];
+const iconMap = {
+  GraduationCap,
+  Users,
+  UserCircle,
+  Camera,
+};
 
 export function FeaturedProjects() {
   return (
@@ -53,53 +26,96 @@ export function FeaturedProjects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {projects.map((project, i) => (
-            <div key={i} className="flex flex-col h-full bg-background border border-border rounded-xl overflow-hidden hover-minimal">
-              <div className="aspect-[4/3] bg-secondary w-full relative">
-                {/* Placeholder for project image */}
-                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/30 font-bold text-2xl font-heading uppercase tracking-widest">
-                  {project.name.charAt(0)}
-                </div>
-              </div>
-              
-              <div className="p-8 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">
-                    {project.industry}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-accent-blue bg-accent-blue/10 px-2 py-1 rounded">
-                    {project.status}
-                  </span>
+          {PROJECTS.map((project: Project, i: number) => {
+            const IconComponent = iconMap[project.iconName] || UserCircle;
+
+            return (
+              <div 
+                key={i} 
+                className="group flex flex-col h-full bg-background border border-border rounded-xl overflow-hidden hover-minimal transition-all duration-300"
+              >
+                {/* Visual Header */}
+                <div className="aspect-[4/3] bg-secondary/80 w-full relative flex items-center justify-center overflow-hidden">
+                  {/* Colorful Icon Box */}
+                  <div className={`w-16 h-16 ${project.boxColor} rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+                    <IconComponent className="w-8 h-8 text-white" strokeWidth={2} />
+                  </div>
+
+                  {/* Live Product Badge (Clickable) */}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition-all duration-200 backdrop-blur-md shadow-xs z-10"
+                      title="Open Live Product"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      Live Site
+                      <ExternalLink size={12} />
+                    </a>
+                  )}
                 </div>
                 
-                <h3 className="text-2xl font-bold text-foreground mb-3 font-heading">{project.name}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tech.map((t) => (
-                    <span key={t} className="text-[11px] font-medium bg-secondary text-secondary-foreground px-2.5 py-1 rounded-md">
-                      {t}
+                {/* Details Section */}
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">
+                      {project.industry}
                     </span>
-                  ))}
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-accent-blue bg-accent-blue/10 px-2 py-1 rounded">
+                      {project.status}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-foreground mb-3 font-heading">
+                    {project.name}
+                  </h3>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tech.map((t) => (
+                      <span key={t} className="text-[11px] font-medium bg-secondary text-secondary-foreground px-2.5 py-1 rounded-md">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  {/* Actions Row */}
+                  <div className="flex items-center justify-between gap-4 pt-4 border-t border-border/60 mt-auto">
+                    {project.liveUrl ? (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-lg bg-foreground text-background text-xs font-bold inline-flex items-center gap-1.5 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xs"
+                      >
+                        <span>Open Live Site</span>
+                        <ExternalLink size={13} />
+                      </a>
+                    ) : (
+                      <span className="text-xs text-muted-foreground font-medium">Internal Platform</span>
+                    )}
+
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="text-xs font-bold text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 group/link transition-colors"
+                    >
+                      <span>Case Study</span>
+                      <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
-                
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="text-sm font-bold text-foreground flex items-center gap-2 group mt-auto"
-                >
-                  View Case Study
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* 🔥 UPDATED CTA SECTION (Image 2 Design) */}
+        {/* 🔥 CTA SECTION */}
         <div className="bg-gradient-to-r from-[#4F1A81] via-[#1A4A8A] to-[#00C2FF] rounded-2xl p-10 md:p-14 text-center flex flex-col items-center shadow-lg">
-          
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-heading max-w-2xl leading-tight">
             Want results like this?
           </h3>
