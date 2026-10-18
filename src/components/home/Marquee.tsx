@@ -15,12 +15,12 @@ const clients = [
   { name: "My Kids Learning App", icon: BookOpen, industry: "EdTech" },
   { name: "Company Attendance System", icon: Building, industry: "Enterprise" },
   { name: "Premium Portfolio", icon: Code, industry: "Personal Brand" },
-  { name: "Photography Website", icon: Camera, industry: "Creative" },
+  { name: "Ritesh Gujarathi Photography", icon: Camera, industry: "Creative" },
   // Duplicate within the array to ensure the marquee is wide enough for large screens
   { name: "My Kids Learning App", icon: BookOpen, industry: "EdTech" },
   { name: "Company Attendance System", icon: Building, industry: "Enterprise" },
   { name: "Premium Portfolio", icon: Code, industry: "Personal Brand" },
-  { name: "Photography Website", icon: Camera, industry: "Creative" },
+  { name: "Ritesh Gujarathi Photography", icon: Camera, industry: "Creative" },
 ];
 
 export function Marquee() {

@@ -9,6 +9,7 @@ import {
   Calendar,
   X,
   MessageCircle,
+  ExternalLink,
 } from "lucide-react";
 import { motion, AnimatePresence, PanInfo, type Variants } from "framer-motion";
 import { WeddingEnquiryForm } from "@/components/photography/WeddingEnquiryForm";
@@ -206,6 +207,15 @@ export default function PhotographyPage() {
 
         {/* Quick Action Pills */}
         <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 mt-6 flex-wrap">
+          <a
+            href="https://riteshgujarathiphotography.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2.5 bg-[#2c2a28] text-white rounded-full text-xs sm:text-sm font-semibold hover:bg-black transition-all shadow-md flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>Visit Live Website: Ritesh Gujarathi Photography</span>
+            <ExternalLink size={14} />
+          </a>
           <a
             href="#enquiry-form"
             className="px-6 py-2.5 bg-[#a07355] text-white rounded-full text-xs sm:text-sm font-medium hover:bg-[#8b5e34] transition-all shadow-md flex items-center gap-2"
