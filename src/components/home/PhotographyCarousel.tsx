@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, type PanInfo } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowRight, Camera } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Camera, ExternalLink } from "lucide-react";
 
 // Real High-Res Photography Portfolio Images
 const images = [
@@ -123,13 +123,22 @@ export function PhotographyCarousel() {
           <ChevronRight size={22} />
         </button>
 
-        {/* Bottom Action Link */}
-        <div className="text-center mt-8">
+        {/* Bottom Action Links */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="https://riteshgujarathiphotography.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-foreground text-background hover:opacity-90 rounded-full text-sm font-semibold transition-all shadow-md hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>Visit Live Website: Ritesh Gujarathi Photography</span>
+            <ExternalLink size={14} />
+          </a>
           <Link
             href="/photography"
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#a07355] hover:bg-[#8b5e34] text-white rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
           >
-            Explore Full Photography Portfolio
+            <span>Explore Full Gallery</span>
             <ArrowRight size={15} />
           </Link>
         </div>

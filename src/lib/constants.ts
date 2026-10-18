@@ -11,6 +11,7 @@ export const SITE_CONFIG = {
   instagramUrl: "https://instagram.com",
   linkedinUrl: "https://linkedin.com",
   githubUrl: "https://github.com",
+  twitterUrl: "https://x.com",
 };
 
 // WhatsApp Direct Link Helper
