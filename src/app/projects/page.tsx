@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <div className="pt-12 md:pt-20 pb-24 md:pb-32 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        
+
         {/* Header Section */}
         <div className="text-center mb-16">
           <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground mb-4 block">
@@ -49,8 +49,8 @@ export default function Projects() {
             const IconComponent = iconMap[project.iconName] || UserCircle;
 
             return (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="group flex flex-col h-full bg-card border border-border rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 {/* Visual Area */}
@@ -74,7 +74,7 @@ export default function Projects() {
                     </a>
                   )}
                 </div>
-                
+
                 {/* Content Section */}
                 <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-4 flex-wrap">
@@ -85,15 +85,15 @@ export default function Projects() {
                       {project.status}
                     </span>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-foreground mb-3 font-heading">
                     {project.name}
                   </h3>
-                  
+
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.tech.map((t) => (
                       <span key={t} className="text-[11px] font-medium bg-background border border-border text-foreground px-2.5 py-1 rounded-md">
@@ -101,7 +101,7 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  
+
                   {/* Action buttons */}
                   <div className="flex items-center justify-between gap-4 pt-4 border-t border-border/60 mt-auto">
                     {project.liveUrl ? (
