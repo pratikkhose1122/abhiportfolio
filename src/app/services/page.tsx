@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Smartphone, Server, Zap, Shield, Repeat, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Smartphone, Server, Zap, Shield, Repeat, CheckCircle2, Rocket, Code2 } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 
 const fadeInUp: Variants = {
@@ -24,20 +24,21 @@ const staggerContainer: Variants = {
   }
 };
 
-// Aapke 2 services ke liye 2 alag colors
+// Colors for the 3 services
 const iconColors = [
   "bg-blue-500", 
-  "bg-purple-500"
+  "bg-purple-500",
+  "bg-emerald-500"
 ];
 
 const services = [
   {
     id: "mobile",
     title: "Mobile App Development",
-    hook: "Native-quality experiences across iOS and Android.",
+    hook: "Build high-performance Android, iOS and Flutter applications.",
     icon: Smartphone,
-    problem: "You need to reach users on their devices but don't want the overhead of managing two separate codebases (Swift and Kotlin) or dealing with sluggish hybrid wrappers.",
-    solution: "I build robust, high-performance applications using React Native and Expo. You get native-level performance and a unified codebase that cuts development time and maintenance costs in half.",
+    problem: "You need to reach users on their devices but don't want the overhead of managing separate codebases or dealing with sluggish hybrid wrappers.",
+    solution: "I build robust, high-performance applications using Flutter, React Native, and native bridges. You get 60fps performance and a unified codebase that cuts development time and maintenance costs in half.",
     benefits: [
       { icon: Zap, label: "Fast Performance", desc: "Smooth 60fps animations and rapid load times." },
       { icon: Repeat, label: "Cross-Platform", desc: "One codebase deployed to both App Store and Google Play." },
@@ -46,17 +47,31 @@ const services = [
     ]
   },
   {
-    id: "saas",
-    title: "SaaS Platforms & Web Apps",
-    hook: "Scalable cloud software built for growth.",
-    icon: Server,
-    problem: "Off-the-shelf software doesn't fit your unique workflow, and building a custom SaaS from scratch often results in technical debt and unscalable architecture.",
-    solution: "I architect custom web applications using Next.js, Node.js, and modern databases. I focus on multi-tenant architecture, robust authentication, and scalable infrastructure so your app can grow with your user base.",
+    id: "mvp",
+    title: "Startup & MVP Development",
+    hook: "Transform ideas into launch-ready products quickly.",
+    icon: Rocket,
+    problem: "Validating your product idea takes too long with traditional agency cycles, wasting runway and missing initial market momentum.",
+    solution: "I help founders and startups architect, design, and code conversion-focused Minimum Viable Products in weeks, not months. Clean code, scalable databases, and built-in user analytics.",
     benefits: [
-      { icon: Zap, label: "Next-Gen Stack", desc: "Built with the latest App Router and server components." },
-      { icon: Shield, label: "Bank-Grade Security", desc: "Secure authentication, RBAC, and data encryption." },
-      { icon: Server, label: "Cloud Scalability", desc: "Deployed on serverless infrastructure to handle traffic spikes." },
-      { icon: CheckCircle2, label: "Stripe Integration", desc: "Seamless subscription and payment processing." }
+      { icon: Zap, label: "Rapid Delivery", desc: "From concept to production launch in record turnaround time." },
+      { icon: Shield, label: "Scalable Architecture", desc: "Built with modern Next.js and cloud databases that scale seamlessly." },
+      { icon: Server, label: "Ready for Investors", desc: "Production-grade codebase and polished user experience." },
+      { icon: CheckCircle2, label: "Analytics & Feedback", desc: "Integrated telemetry to observe real user behavior from day one." }
+    ]
+  },
+  {
+    id: "custom",
+    title: "Custom Software Solutions",
+    hook: "Tailored software built around your business workflow.",
+    icon: Code2,
+    problem: "Generic off-the-shelf software rarely fits specialized business workflows, creating bottlenecks, duplicate manual tasks, and fragmented data.",
+    solution: "I build end-to-end custom software solutions, enterprise web portals, automated API integrations, and internal tooling crafted specifically for your team's operational needs.",
+    benefits: [
+      { icon: Zap, label: "Next-Gen Stack", desc: "Built with TypeScript, Next.js, and modern cloud databases." },
+      { icon: Shield, label: "Enterprise Security", desc: "Granular role-based access control (RBAC) and encryption." },
+      { icon: Server, label: "Automated Workflows", desc: "Eliminate repetitive tasks with custom webhooks and cron jobs." },
+      { icon: CheckCircle2, label: "Ongoing Reliability", desc: "Thoroughly tested with clear documentation and support." }
     ]
   }
 ];
