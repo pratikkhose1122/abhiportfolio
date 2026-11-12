@@ -12,31 +12,34 @@ import {
   MessageCircle, 
   ChevronDown, 
   ArrowRight, 
-  Smartphone, 
-  Rocket, 
-  Code2 
+  UtensilsCrossed, 
+  Palmtree, 
+  GraduationCap 
 } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
 
-const servicesMenu = [
+const projectsMenu = [
   {
-    title: "Mobile App Development",
-    desc: "Build high-performance Android, iOS and Flutter applications.",
-    href: "/services#mobile",
-    icon: Smartphone,
+    title: "Hotel Digital Menu System",
+    desc: "Interactive QR food menu with instant search & filters.",
+    href: "/projects/hotel-menu",
+    icon: UtensilsCrossed,
+    color: "bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 group-hover:bg-amber-100 dark:group-hover:bg-amber-900/60",
   },
   {
-    title: "Startup & MVP Development",
-    desc: "Transform ideas into launch-ready products quickly.",
-    href: "/services#mvp",
-    icon: Rocket,
+    title: "Lonavala Luxury Villa",
+    desc: "Direct booking getaway villa with private pool amenities.",
+    href: "/projects/lonavala-villa",
+    icon: Palmtree,
+    color: "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/60",
   },
   {
-    title: "Custom Software Solutions",
-    desc: "Tailored software built around your business workflow.",
-    href: "/services#custom",
-    icon: Code2,
+    title: "My Kids Learning App",
+    desc: "EdTech learning and classroom attendance platform.",
+    href: "/projects/my-kids-learning",
+    icon: GraduationCap,
+    color: "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/60",
   },
 ];
 
@@ -46,8 +49,8 @@ export function Navbar() {
   const { theme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
+  const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -64,7 +67,7 @@ export function Navbar() {
 
   // Close dropdown on page navigate
   useEffect(() => {
-    setServicesDropdownOpen(false);
+    setProjectsDropdownOpen(false);
     setMobileMenuOpen(false);
   }, [pathname]);
 
@@ -72,7 +75,7 @@ export function Navbar() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setServicesDropdownOpen(false);
+        setProjectsDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -81,12 +84,12 @@ export function Navbar() {
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setServicesDropdownOpen(true);
+    setProjectsDropdownOpen(true);
   };
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
-      setServicesDropdownOpen(false);
+      setProjectsDropdownOpen(false);
     }, 180);
   };
 
@@ -112,7 +115,14 @@ export function Navbar() {
             Home
           </Link>
 
-          {/* Services Mega Menu Dropdown */}
+          <Link
+            href="/services"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Services
+          </Link>
+
+          {/* Projects Mega Menu Dropdown */}
           <div
             ref={dropdownRef}
             className="relative"
@@ -120,58 +130,68 @@ export function Navbar() {
             onMouseLeave={handleMouseLeave}
           >
             <button
-              onClick={() => setServicesDropdownOpen((prev) => !prev)}
+              onClick={() => setProjectsDropdownOpen((prev) => !prev)}
               className={`inline-flex items-center gap-1 text-sm font-medium transition-colors py-2 cursor-pointer ${
-                servicesDropdownOpen ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                projectsDropdownOpen ? "text-foreground" : "text-muted-foreground hover:text-foreground"
               }`}
-              aria-expanded={servicesDropdownOpen}
+              aria-expanded={projectsDropdownOpen}
             >
-              <span>Services</span>
+              <span>Projects</span>
               <ChevronDown
                 size={14}
                 className={`transition-transform duration-200 ${
-                  servicesDropdownOpen ? "rotate-180 text-blue-600 dark:text-blue-400" : ""
+                  projectsDropdownOpen ? "rotate-180 text-blue-600 dark:text-blue-400" : ""
                 }`}
               />
             </button>
 
             {/* Mega Menu Flyout Card */}
             <AnimatePresence>
-              {servicesDropdownOpen && (
+              {projectsDropdownOpen && (
                 <motion.div
                   initial={{ opacity: 0, y: 8, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 6, scale: 0.98 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute top-full left-1/2 -translate-x-[36%] mt-3 w-[680px] bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] p-6 z-50 overflow-hidden"
+                  className="absolute top-full left-1/2 -translate-x-[48%] mt-3 w-[680px] bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] p-6 z-50 overflow-hidden"
                 >
                   <div className="grid grid-cols-12 gap-6 items-stretch">
                     
-                    {/* Left Column: Services List (7 cols) */}
+                    {/* Left Column: Projects List (7 cols) */}
                     <div className="col-span-7 flex flex-col justify-between pr-2">
                       <div>
-                        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-400 dark:text-zinc-500 mb-4 block">
-                          SERVICES
-                        </span>
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-400 dark:text-zinc-500 block">
+                            FEATURED WORK
+                          </span>
+                          <Link
+                            href="/projects"
+                            onClick={() => setProjectsDropdownOpen(false)}
+                            className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
+                          >
+                            <span>All Projects</span>
+                            <ArrowRight size={12} />
+                          </Link>
+                        </div>
                         
                         <div className="space-y-1.5">
-                          {servicesMenu.map((svc) => (
+                          {projectsMenu.map((proj) => (
                             <Link
-                              key={svc.title}
-                              href={svc.href}
-                              onClick={() => setServicesDropdownOpen(false)}
+                              key={proj.title}
+                              href={proj.href}
+                              onClick={() => setProjectsDropdownOpen(false)}
                               className="flex items-center justify-between p-3 rounded-2xl hover:bg-zinc-50 dark:hover:bg-zinc-800/60 transition-all duration-200 group text-left"
                             >
                               <div className="flex items-center gap-3.5">
-                                <div className="w-11 h-11 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/60 transition-all shadow-sm">
-                                  <svc.icon size={20} strokeWidth={2} />
+                                <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-all shadow-sm ${proj.color}`}>
+                                  <proj.icon size={20} strokeWidth={2} />
                                 </div>
                                 <div>
                                   <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                    {svc.title}
+                                    {proj.title}
                                   </h4>
                                   <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-snug mt-0.5 max-w-[250px]">
-                                    {svc.desc}
+                                    {proj.desc}
                                   </p>
                                 </div>
                               </div>
@@ -202,14 +222,14 @@ export function Navbar() {
                       <div className="flex items-center gap-2.5 mt-auto">
                         <Link
                           href="/projects/royal-villa"
-                          onClick={() => setServicesDropdownOpen(false)}
+                          onClick={() => setProjectsDropdownOpen(false)}
                           className="px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors shadow-sm"
                         >
                           View Study
                         </Link>
                         <Link
                           href="/contact"
-                          onClick={() => setServicesDropdownOpen(false)}
+                          onClick={() => setProjectsDropdownOpen(false)}
                           className="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-500/25 transition-colors"
                         >
                           Let&apos;s Talk
@@ -222,13 +242,6 @@ export function Navbar() {
               )}
             </AnimatePresence>
           </div>
-
-          <Link
-            href="/projects"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Projects
-          </Link>
 
           <Link
             href="/photography"
@@ -300,42 +313,50 @@ export function Navbar() {
               Home
             </Link>
 
-            {/* Mobile Services Accordion */}
+            <Link
+              href="/services"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Services
+            </Link>
+
+            {/* Mobile Projects Accordion */}
             <div className="border-y border-border/60 py-3">
               <button
-                onClick={() => setMobileServicesOpen((prev) => !prev)}
+                onClick={() => setMobileProjectsOpen((prev) => !prev)}
                 className="w-full flex items-center justify-between text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                <span>Services</span>
+                <span>Projects</span>
                 <ChevronDown
                   size={18}
                   className={`transition-transform duration-200 ${
-                    mobileServicesOpen ? "rotate-180 text-blue-600" : ""
+                    mobileProjectsOpen ? "rotate-180 text-blue-600" : ""
                   }`}
                 />
               </button>
 
               <AnimatePresence>
-                {mobileServicesOpen && (
+                {mobileProjectsOpen && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     className="overflow-hidden pt-3 space-y-2.5"
                   >
-                    {servicesMenu.map((svc) => (
+                    {projectsMenu.map((proj) => (
                       <Link
-                        key={svc.title}
-                        href={svc.href}
+                        key={proj.title}
+                        href={proj.href}
                         onClick={() => setMobileMenuOpen(false)}
                         className="flex items-center gap-3 p-2.5 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors"
                       >
-                        <div className="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                          <svc.icon size={17} strokeWidth={2} />
+                        <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${proj.color}`}>
+                          <proj.icon size={17} strokeWidth={2} />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-foreground">{svc.title}</p>
-                          <p className="text-[11px] text-muted-foreground line-clamp-1">{svc.desc}</p>
+                          <p className="text-sm font-semibold text-foreground">{proj.title}</p>
+                          <p className="text-[11px] text-muted-foreground line-clamp-1">{proj.desc}</p>
                         </div>
                       </Link>
                     ))}
@@ -348,26 +369,27 @@ export function Navbar() {
                       <p className="text-xs text-muted-foreground mt-0.5 mb-3">
                         Premium luxury villa and stay portal with royal suites & direct reservations.
                       </p>
-                      <Link
-                        href="/projects/royal-villa"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="inline-block px-3.5 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold"
-                      >
-                        View Study
-                      </Link>
+                      <div className="flex items-center gap-2">
+                        <Link
+                          href="/projects/royal-villa"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="inline-block px-3.5 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold"
+                        >
+                          View Study
+                        </Link>
+                        <Link
+                          href="/projects"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="inline-block px-3.5 py-1.5 rounded-full border border-border bg-card text-foreground text-xs font-semibold"
+                        >
+                          All Projects
+                        </Link>
+                      </div>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-
-            <Link
-              href="/projects"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Projects
-            </Link>
 
             <Link
               href="/photography"
