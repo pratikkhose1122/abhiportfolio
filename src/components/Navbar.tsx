@@ -192,16 +192,16 @@ export function Navbar() {
                           FEATURED PROJECT
                         </span>
                         <h4 className="text-xl font-bold font-heading text-zinc-900 dark:text-zinc-100 mb-2">
-                          MyGymBook
+                          Royal Villa Resort
                         </h4>
                         <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
-                          Gym Management Platform built using Flutter and Supabase. Realtime synchronization across all devices.
+                          Premium luxury villa and stay portal featuring royal suite showcases, booking workflows, and scenic Western Ghats views.
                         </p>
                       </div>
 
                       <div className="flex items-center gap-2.5 mt-auto">
                         <Link
-                          href="/projects/mygymbook"
+                          href="/projects/royal-villa"
                           onClick={() => setServicesDropdownOpen(false)}
                           className="px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors shadow-sm"
                         >
@@ -344,12 +344,12 @@ export function Navbar() {
                       <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block mb-1">
                         Featured Project
                       </span>
-                      <p className="text-sm font-bold text-foreground">MyGymBook</p>
+                      <p className="text-sm font-bold text-foreground">Royal Villa Resort</p>
                       <p className="text-xs text-muted-foreground mt-0.5 mb-3">
-                        Gym Management Platform built using Flutter and Supabase.
+                        Premium luxury villa and stay portal with royal suites & direct reservations.
                       </p>
                       <Link
-                        href="/projects/mygymbook"
+                        href="/projects/royal-villa"
                         onClick={() => setMobileMenuOpen(false)}
                         className="inline-block px-3.5 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold"
                       >

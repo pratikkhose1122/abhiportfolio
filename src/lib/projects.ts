@@ -96,32 +96,6 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
-    slug: "mygymbook",
-    name: "MyGymBook",
-    industry: "Fitness & SaaS",
-    status: "Featured Project",
-    description: "Gym Management Platform built using Flutter and Supabase. Realtime synchronization across all devices.",
-    tech: ["Flutter", "Supabase", "PostgreSQL", "Dart", "Tailwind CSS"],
-    liveUrl: undefined,
-    iconName: "Dumbbell",
-    boxColor: "bg-blue-600",
-    statusColor: "text-blue-500 bg-blue-500/10",
-    overview: "MyGymBook is an all-in-one gym and fitness center management ecosystem designed to handle member onboarding, recurring membership billing, trainer schedules, and live biometric workout tracking.",
-    problem: "Gym owners were losing revenue due to expired memberships, manual attendance records on registers, and poor member retention with no digital tracking.",
-    solution: "Engineered a cross-platform mobile and web application powered by Flutter and Supabase with real-time biometric check-in sync, automated fee alerts, and member progress analytics.",
-    benefits: [
-      "Real-time attendance & biometric synchronization across all client devices",
-      "Automated membership expiry alerts & payment link generation via WhatsApp",
-      "Trainer assignment, slot booking, and personalized workout plan portal",
-      "Offline-first mobile application architecture for reliable front-desk operation"
-    ],
-    impact: [
-      { value: "10K+", label: "Active Members Managed" },
-      { value: "99.9%", label: "Realtime Sync Reliability" },
-      { value: "45%", label: "Increase in Renewal Retention" }
-    ]
-  },
-  {
     slug: "my-kids-learning",
     name: "My Kids Learning App",
     industry: "EdTech",
