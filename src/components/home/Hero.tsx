@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Send, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { motion, Variants } from "framer-motion";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -65,8 +65,8 @@ export function Hero() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-80"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
                 </span>
-                <span className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-cyan-200">
-                  SOFTWARE DEVELOPER • AVAILABLE FOR PROJECTS
+                <span className="text-[11px] sm:text-xs font-semibold tracking-[0.16em] uppercase text-cyan-200">
+                  HI, I&apos;M ABHIJIT MUNGASE 👋
                 </span>
               </div>
             </motion.div>
@@ -74,21 +74,21 @@ export function Hero() {
             {/* Main Headline */}
             <motion.h1 
               variants={itemVars} 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-extrabold tracking-tight leading-[1.08] text-white font-heading mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight leading-[1.1] text-white font-heading mb-6"
             >
-              I build <br />
+              Building Modern <br className="hidden sm:inline" />
+              Software{" "}
               <span className="bg-gradient-to-r from-[#00f2fe] via-[#38bdf8] to-[#c084fc] bg-clip-text text-transparent">
-                digital experiences
-              </span> <br />
-              that make an impact.
+                That Makes a Difference.
+              </span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p 
               variants={itemVars} 
-              className="text-base sm:text-lg md:text-xl text-slate-300/90 max-w-xl leading-relaxed mb-8 font-normal"
+              className="text-base sm:text-lg text-slate-300/90 max-w-xl leading-relaxed mb-8 font-normal"
             >
-              I create modern web applications, mobile applications, and scalable software solutions that solve real problems and deliver great user experiences.
+              Software Developer passionate about building modern, scalable, and user-friendly web applications, mobile apps, and innovative digital solutions. I turn ideas into impactful products through clean code, creative thinking, and modern technologies.
             </motion.p>
 
             {/* Action Buttons */}
@@ -97,8 +97,8 @@ export function Hero() {
                 href="/projects"
                 className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-[#00c6ff] via-[#1e6bef] to-[#9333ea] shadow-[0_0_25px_rgba(0,198,255,0.35)] hover:shadow-[0_0_35px_rgba(147,51,234,0.55)] transition-all duration-300 flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-[0.98] group"
               >
-                <Send size={16} className="-rotate-12 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-white" />
-                <span>Explore My Work</span>
+                <span>View My Projects</span>
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 text-white" />
               </Link>
               
               <Link
