@@ -6,7 +6,7 @@ export interface Project {
   description: string;
   tech: string[];
   liveUrl?: string;
-  iconName: "GraduationCap" | "Users" | "UserCircle" | "Camera" | "Dumbbell";
+  iconName: "GraduationCap" | "Users" | "UserCircle" | "Camera" | "Dumbbell" | "UtensilsCrossed" | "Palmtree" | "Crown";
   boxColor: string;
   statusColor?: string;
   overview: string;
@@ -17,6 +17,84 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    slug: "hotel-menu",
+    name: "Hotel Digital Menu System",
+    industry: "Food & Hospitality",
+    status: "Live & Active",
+    description: "Modern interactive digital restaurant menu application featuring categorized food items, instant search, responsive UI, and contactless dining experience.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://hotel-munu.vercel.app/",
+    iconName: "UtensilsCrossed",
+    boxColor: "bg-amber-500",
+    statusColor: "text-amber-400 bg-amber-500/10",
+    overview: "A sleek, mobile-optimized digital menu web application designed for hotels, cafes, and restaurants to offer diners an interactive, contactless browsing experience with rich visuals, ingredient filters, and live dish pricing.",
+    problem: "Traditional paper menus are costly to reprint when prices change, get damaged quickly, and fail to showcase high-resolution dish presentations or dynamic dietary tags.",
+    solution: "Developed a blazing-fast, QR-scannable web menu platform with category tabs, dietary filter toggles, real-time price updates, and responsive mobile-first performance.",
+    benefits: [
+      "Instant QR code access with no app download required",
+      "Category-based navigation with fast dish search and filtering",
+      "Rich food imagery, chef specials, and dietary indicators",
+      "Cost-effective zero-waste replacement for paper restaurant menus"
+    ],
+    impact: [
+      { value: "100%", label: "Mobile-First Responsiveness" },
+      { value: "0s", label: "Menu Update Latency" },
+      { value: "35%", label: "Faster Table Ordering Speed" }
+    ]
+  },
+  {
+    slug: "lonavala-villa",
+    name: "Lonavala Luxury Villa",
+    industry: "Vacation Stay & Hospitality",
+    status: "Live & Active",
+    description: "High-end vacation villa booking showcase platform highlighting private pool amenities, scenic Western Ghats views, guest reviews, and direct reservation inquiries.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://lonawala-villa.vercel.app/",
+    iconName: "Palmtree",
+    boxColor: "bg-emerald-600",
+    statusColor: "text-emerald-400 bg-emerald-500/10",
+    overview: "An immersive luxury villa rental platform crafted for high-end getaway properties in Lonavala, featuring interactive amenity tours, drone property visuals, bedroom breakdowns, and an integrated booking inquiry funnel.",
+    problem: "Property owners were losing up to 20% in third-party OTA commission fees (Airbnb/MakeMyTrip) and lacked a dedicated brand presence to capture direct family and corporate weekend bookings.",
+    solution: "Engineered an editorial direct-booking property portal featuring immersive photo galleries, transparent pricing tiers, Google Maps location integration, and direct WhatsApp / phone booking routing.",
+    benefits: [
+      "Commission-free direct booking inquiry funnel via WhatsApp",
+      "High-definition property gallery and 360-degree amenity showcases",
+      "Detailed villa rules, check-in guides, and surrounding attraction maps",
+      "Optimized local SEO for weekend stays and luxury villa searches"
+    ],
+    impact: [
+      { value: "0%", label: "Third-Party OTA Commission Fees" },
+      { value: "3x", label: "Increase in Direct Weekend Bookings" },
+      { value: "< 1s", label: "Page Load Speed on 4G Mobile" }
+    ]
+  },
+  {
+    slug: "royal-villa",
+    name: "Royal Villa Resort & Stays",
+    industry: "Luxury Hospitality",
+    status: "Live & Active",
+    description: "Premium resort and heritage villa destination portal featuring royal suite showcases, event venue hosting details, and seamless reservation workflows.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://royal-villa-khaki.vercel.app/",
+    iconName: "Crown",
+    boxColor: "bg-indigo-600",
+    statusColor: "text-indigo-400 bg-indigo-500/10",
+    overview: "Royal Villa is a flagship luxury stay showcase built to attract grand family gatherings, destination weddings, and corporate offsites with royal aesthetics, suite configurations, and customized culinary packages.",
+    problem: "High-ticket luxury travelers expect a prestigious digital experience before committing to multi-day premium stays. Outdated websites fail to convey luxury craftsmanship and property exclusivity.",
+    solution: "Created an ultra-elegant digital experience featuring smooth scroll animations, curated stay packages, customer testimonials, and direct concierge booking access.",
+    benefits: [
+      "Grand royal aesthetics with smooth micro-interactions and transitions",
+      "Comprehensive room, lawn, and private dining amenity breakdowns",
+      "Custom wedding and corporate retreat inquiry forms",
+      "High-converting CTA buttons connected to property management"
+    ],
+    impact: [
+      { value: "5★", label: "Guest Satisfaction & Trust Score" },
+      { value: "50%+", label: "Direct Inquiries for Weekend Stays" },
+      { value: "99.9%", label: "Uptime on Vercel Edge Network" }
+    ]
+  },
   {
     slug: "mygymbook",
     name: "MyGymBook",

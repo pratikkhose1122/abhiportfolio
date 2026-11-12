@@ -1,5 +1,16 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink, GraduationCap, Users, UserCircle, Camera } from "lucide-react";
+import { 
+  ArrowRight, 
+  ExternalLink, 
+  GraduationCap, 
+  Users, 
+  UserCircle, 
+  Camera,
+  Dumbbell,
+  UtensilsCrossed,
+  Palmtree,
+  Crown
+} from "lucide-react";
 import { PROJECTS, type Project } from "@/lib/projects";
 
 const iconMap = {
@@ -7,6 +18,10 @@ const iconMap = {
   Users,
   UserCircle,
   Camera,
+  Dumbbell,
+  UtensilsCrossed,
+  Palmtree,
+  Crown,
 };
 
 export function FeaturedProjects() {
